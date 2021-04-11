@@ -64,7 +64,6 @@ var startServer = /*#__PURE__*/function () {
             server.applyMiddleware({
               app: app
             });
-            app.use((0, _cors["default"])());
             app.post("/create-payment-intent", /*#__PURE__*/function () {
               var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
                 var Price, paymentIntent;
@@ -98,7 +97,7 @@ var startServer = /*#__PURE__*/function () {
                 return _ref3.apply(this, arguments);
               };
             }());
-            _context2.next = 11;
+            _context2.next = 10;
             return _mongoose["default"].connect(Config.db.url, {
               useNewUrlParser: true,
               useCreateIndex: true,
@@ -111,14 +110,14 @@ var startServer = /*#__PURE__*/function () {
               process.exit(-1);
             });
 
-          case 11:
+          case 10:
             app.listen({
               port: Config.server.port
             }, function (e) {
               return console.log("\uD83D\uDE80 GraphQl ready at http://localhost:".concat(Config.server.port).concat(server.graphqlPath));
             });
 
-          case 12:
+          case 11:
           case "end":
             return _context2.stop();
         }

@@ -29,6 +29,9 @@ const startServer = async () => {
   server.applyMiddleware({ app });
 
 
+  app.get("/", async (req, res) => {
+    res.send("API WORKING");
+  });
   app.post("/create-payment-intent", async (req, res) => {
     const { Price } = req.body;
 

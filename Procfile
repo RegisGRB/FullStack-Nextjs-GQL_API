@@ -1,1 +1,1 @@
-web : node --exec babel-node ./build/index.js
+web : node src/index.js
