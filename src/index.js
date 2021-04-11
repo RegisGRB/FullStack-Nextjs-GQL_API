@@ -27,7 +27,7 @@ const startServer = async () => {
   });
   app.use(Auth);
   server.applyMiddleware({ app });
-  app.use(cors())
+
 
   app.post("/create-payment-intent", async (req, res) => {
     const { Price } = req.body;
