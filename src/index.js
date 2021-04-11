@@ -63,9 +63,9 @@ const startServer = async () => {
       process.exit(-1);
     });
 
-  app.listen({ port: Config.server.port }, (e) =>
+  app.listen({ port: process.env.PORT }, (e) =>
     console.log(
-      `🚀 GraphQl ready at http://localhost:${Config.server.port}${server.graphqlPath}`
+      `🚀 GraphQl ready at http://localhost:${process.env.PORT}${server.graphqlPath}`
     )
   );
 };
