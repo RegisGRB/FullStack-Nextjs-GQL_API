@@ -1,1 +1,1 @@
-web : nodemon --exec babel-node ./build/index.js
+web : node --exec babel-node ./build/index.js
