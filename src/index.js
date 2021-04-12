@@ -30,6 +30,7 @@ const startServer = async () => {
 
 
   app.get("/", async (req, res) => {
+    
     res.send("API WORKING");
   });
   app.post("/create-payment-intent", async (req, res) => {
