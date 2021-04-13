@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/configs/index.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AACA;;AACA;;AACA","sourcesContent":["\r\nimport db from \"./db.config\"\r\nimport jwt from \"./jwt.config\"\r\nimport server from \"./server.config\"\r\n\r\nexport {\r\n    db,\r\n    jwt,\r\n    server\r\n}"],"file":"index.js"}
