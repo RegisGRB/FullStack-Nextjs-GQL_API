@@ -19,7 +19,7 @@ const startServer = async () => {
   //   credentials: true,
   //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   // };
- 
+ app.use(cors())
   const server = new ApolloServer({
     typeDefs,
     resolvers,
