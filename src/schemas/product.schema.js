@@ -12,7 +12,7 @@ module.exports = gql`
     products: [Product]
     product(id: ID!): Product
     productsFilter(value:String!): [Product]
-    productsFilter2(value:String!,categ:ID) :[Categorie]
+    productsByArray(array:[ID]):[Product]
   }
   extend type Mutation {
     createProduct(Title: String, Price: Float,Url:String, Description: String): Product,

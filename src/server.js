@@ -8,17 +8,13 @@ import resolvers from "./resolvers";
 import * as Config from "./configs";
 import cors from "cors";
 import Auth from "./middleware/Auth";
-
+const sgMail = require('@sendgrid/mail')
 const startServer = async () => {
   const app = express();
   const stripe = require("stripe")("sk_test_51IdKa0EWLULmTbAKV5JLEAXK4XalxwTWVRVYc9nl2bUEeHLnvZ8IFXnuxUdNjtVT0nktMU79VVeuDsSHE58KO5nF00Bjcw0zFE");
   app.use(express.static("."));
   app.use(express.json());
-  // const corsOptions = {
-  //   origin: process.env.CORS_ORIGIN,
-  //   credentials: true,
-  //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  // };
+
  app.use(cors())
   const server = new ApolloServer({
     typeDefs,
@@ -34,7 +30,7 @@ const startServer = async () => {
     res.send("API WORKING");
   });
   app.post("/create-payment-intent", async (req, res) => {
-    const { Price } = req.body;
+    const { Price,receipt_email } = req.body;
 
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
@@ -42,7 +38,23 @@ const startServer = async () => {
       currency: "usd"
 
     });
-
+    console.log(receipt_email)
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    const msg = {
+      to: receipt_email, // Change to your recipient
+      from: "regis.grumberg@gmail.com", // Change to your verified sender
+      subject: 'Achat Fullstack gql',
+      text: `Achat fait sur une app de test au prix de ${Price}€`,
+      html: '<strong>ceci est un achat</strong>',
+    }
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent')
+      })
+      .catch((error) => {
+        console.error(error)
+      })
     res.send({
       clientSecret: paymentIntent.client_secret
     });

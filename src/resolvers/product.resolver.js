@@ -10,6 +10,11 @@ module.exports = {
         $and: [{ $or: [{ Title: regex }, { Description: regex }] }],
       });
     },
+    productsByArray: (parent, args) => {
+      return Models.Product.find({
+        _id: { $in: args.array },
+      });
+    },
     product: (parent, args) => {
       return Models.Product.findById(args.id);
     },
