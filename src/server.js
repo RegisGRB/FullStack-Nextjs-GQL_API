@@ -45,7 +45,7 @@ const startServer = async () => {
       from: "regis.grumberg@gmail.com", // Change to your verified sender
       subject: 'Achat Fullstack gql',
       text: `Achat fait sur une app de test au prix de ${Price}€`,
-      html: '<strong>ceci est un achat</strong>',
+      html: `<strong>Achat fait sur une app de test au prix de ${Price}€</strong>`,
     }
     sgMail
       .send(msg)
